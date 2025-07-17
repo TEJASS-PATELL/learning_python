@@ -315,9 +315,33 @@ print(d)
 
 #* Exception Handling-
 
-a = "hello"
+a = int(input("Enter any number :- "));
 
+try:
+    print(10/a)
 
+except Exception as err:
+    print(f"sorry their is an error");
 
+else:
+    print("their is no exception");
+
+finally: 
+    print("I will run no matter what");
+
+print("ok i have done division")
+
+age = int(input("Enter your age : "));
+
+try:
+    if age < 10 or age > 18:
+        raise ValueError("your age must between 10 to 18")
+    else:
+        print("Welcome to the club")
+
+except Exception as err:
+    print(f"an error occurs : {err}")
+
+print("the club start soon")
 
 
