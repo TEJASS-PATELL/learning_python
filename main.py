@@ -345,3 +345,20 @@ except Exception as err:
 print("the club start soon")
 
 
+#* File Handling- 
+
+# poore file ka content read karke print kar rahe hain
+p = open('main.py', 'r')  
+print(p.read())  
+
+# 'new.txt' file ko append mode me open kar rahe hain (purana content delete nahi hoga)
+# agar 'w' use karte to purana content delete ho jaata
+q = open("new.txt", 'a')  
+print(q)  
+
+# file me new content add kar rahe hain (append ho raha hai)
+q.write("i am adding more content")  
+
+# file ko close karna zaroori hota hai baad me changes save ho jaayein
+q.close()  
+
