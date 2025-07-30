@@ -21,12 +21,32 @@ def createfile():
     except Exception as err:
         print(f"Error occurred: {err}")
 
-print("Press 1 for creating a file");
-print("Press 2 for updating a file");
-print("Press 3 for delete a file");
-print("Press 4 for reading a file");
+def readfile():
+    try:
+     allfile()
+     name = input("Which file you want to read :- ")
+     p = Path(name)
+     if p.exists() and p.is_file():
+        with open(p, 'r') as fr:
+            data = fr.read()
+            print(data)
 
-check = int(input("Please tell your response :- "));
+            print("File succesfully read.")
+     else:
+        print("file does not exist")
+
+    except Exception as err:
+        print(f"Error occurs : {err}")
+
+print("Press 1 for creating a file")
+print("Press 2 for updating a file")
+print("Press 3 for delete a file")
+print("Press 4 for reading a file")
+
+check = int(input("Please tell your response :- "))
 
 if check == 1: 
     createfile()
+
+if check == 4:
+    readfile()
