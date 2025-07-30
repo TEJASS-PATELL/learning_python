@@ -46,9 +46,9 @@ def updatefile():
         name = input("Tell which file you want to update :- ")
         p = Path(name)
         if p.exists() and p.is_file():
-            print("Press 1 for changing the file name :- ")
-            print("Press 2 for overwriting the data in the file :- ")
-            print("Press 3 for appending some content in your file :- ")
+            print("Press 1 for changing the file name.")
+            print("Press 2 for overwriting the data in the file.")
+            print("Press 3 for appending some content in your file.")
 
             res = int(input("Tell your response :- "))
 
