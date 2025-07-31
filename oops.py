@@ -185,11 +185,11 @@ class Animal:
         print("Animal makes a sound")
 
 class Dog(Animal):
-    def sound(self):   # 👈 Same function, new version
+    def sound(self):   #  Same function, new version
         print("Dog barks")
 
 class Cat(Animal):
-    def sound(self):   # 👈 Same function, new version
+    def sound(self):   #  Same function, new version
         print("Cat meows")
 
 # Different objects
@@ -198,4 +198,72 @@ obj2 = Cat()
 
 obj1.sound()   # Output: Dog barks
 obj2.sound()   # Output: Cat meows
-#! 
+#! Function Overriding- Child class redefines parent method	Dog.sound() overrides Animal.sound()
+#! Function overloading (not in Python)
+
+#? Duck typing-
+class Duck:
+    def speak(self):
+        print("Quack quack")
+
+class Dog:
+    def speak(self):
+        print("Bhow bhow")
+
+def call_speak(obj):
+    obj.speak()  # bas ye method hona chahiye, type important nahi
+
+call_speak(Duck())   # Output: Quack quack
+call_speak(Dog())    # Output: Bhow bhow
+
+
+#! Encapsulation- "Data ko hide karna aur usko control ke through access dena."
+
+class Person:
+    def __init__(self, name, salary, age):
+        self.name = name                             #* public- Accessible from anywhere
+        self._salary = salary                        #* protected- only inside class or subclass
+        self.__age = age                             #* __ => private (encapsulated)- Only inside class (not outside)
+
+    def show(self):
+        print(f"Name: {self.name}, Salary: {self._salary}, Age: {self.__age}")
+
+    def get_age(self):                  # getter (safe access)
+        return self.__age
+
+    def set_age(self, new_age):         # setter (safe change)
+        if new_age > 0:
+            self.__age = new_age
+        else:
+            print("Invalid age")
+
+obj = Person("Tejas", 1000000, 22)
+
+obj.show()         # works
+#?  print(obj.__age)  Error: age is private
+obj._salary = 222222222222  #! in protected method any one can change the value so it not that much usefull.
+
+print(obj.get_age())     # Safe access using method
+obj.set_age(25)          # Safe modify
+obj.show()
+
+#! Abstraction- "Sirf kaam dikhana, uska andar ka logic chhupana."
+
+from abc import ABC, abstractmethod
+
+class Vehicle(ABC):   
+    @abstractmethod
+    def start(self):
+        pass
+
+class Car(Vehicle):
+    def __init__(self, name):
+        self.name = name
+
+    def start(self):
+        print(f"Hello this is my car class :- {self.name}")
+        print("This is my start function calling form car class.")
+
+obj = Car("BMW")
+obj.start()
+# obj = Vehicle()  #! Vehicle ek abstract class hai — iska object directly nahi ban sakta.
